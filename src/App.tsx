@@ -10,10 +10,14 @@ function App() {
     setTodos((prev) => [...prev, { id: Math.random().toString(), text }]);
   };
 
+  const todoDeleteHandler = (id: string) => {
+    setTodos((prevTodos) => prevTodos?.filter((t) => t?.id !== id));
+  };
+
   return (
     <div className="App">
       <NewTodo todoAddHandler={todoAddHandler} />
-      <TodoList items={todos} />
+      <TodoList items={todos} deleteTodo={todoDeleteHandler} />
     </div>
   );
 }
